@@ -1,18 +1,18 @@
 # leetcode easy
 
-from typing import TYPE_CHECKING
-
-
 def romanToInteger(s):
+    roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500,
+        'M': 1000, 'IV': 4, 'IX': 9, 'XL': 40, 'XC': 90, 'CD': 400, 'CM': 900}
+    i = 0
     result = 0
-    first_half = 0
-    second_half = 0
-    letter = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
-
-    def minus(s):
-        for roman in s[1:]:
-            result += -1 + letter[roman]
-    
+    while i < len(s):
+        # find numbers with 2 letters
+        if i+1 < len(s) and s[i:i+2] in roman:
+            result += roman[s[i:i+2]]
+            i += 2
+        else:
+            result += roman[s[i]]
+            i += 1
     return result
 
 print(romanToInteger("VII")) 
