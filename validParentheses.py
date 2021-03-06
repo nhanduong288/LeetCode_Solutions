@@ -2,42 +2,24 @@
 # determine if the input string is valid.
 
 def validParentheses(s):
-    '''for par in s:
-        if s.count('(') != s.count(')') or s.count('[') != s.count(']') or s.count('{') != s.count('}'):
-            return False
-        elif par == '(' and (s.index(')') - s.index('(')) % 2 != 1:
-            return False
-        elif par == '[' and (s.index(']') - s.index('[')) % 2 != 1:
-            return False
-        elif par == '{' and (s.index('}') - s.index('{')) % 2 != 1:
-            return False
-        return True'''
-    open_par = '([{'
+    par_dict = {'(':')', '[':']', '{':'}'}
+    open_par = '({['
     ls = list(s)
-    print('is this working')
-    for thing in ls:
-        print('we are here')
-        if ls[0] not in open_par:
-            return False
-        elif ls.count('(') != ls.count(')') or ls.count('[') != ls.count(']') or ls.count('{') != ls.count('}'):
-            return False
-        else:
-            for i in range(len(ls)):
-                if ls[i] == '(' and (ls.index(')') - ls.index('(')) % 2 != 1:
-                    ls.remove('(')
-                    ls.remove(')')
-                    print('length (: ' + len(ls))
-                elif ls[i] == '{' and (ls.index('}') - ls.index('{')) % 2 != 1:
-                    ls.remove('{')
-                    ls.remove('}')
-                    print('length {: ' + len(ls))
-                elif ls[i] == '[' and (ls.index(']') - ls.index('[')) % 2 != 1:
-                    ls.remove('[')
-                    ls.remove(']')
-                    print('length []: ' + len(ls))
-    if len(ls) == 0:
-        return True
-    return False
+    '''print('where am i')
+    print(len(ls) > 0)
+    print(ls[0] in open_par)
+    print((ls.index(ls[0]) - ls.index(par_dict[ls[0]])) % 2 == 1)
+    print(ls.index(ls[0]))  
+    print(ls.index(')'))'''
+    if s.count('(') != s.count(')') or s.count('[') != s.count(']') or s.count('{') != s.count('}'):
+        ls = ls
+    else:
+        while len(ls) > 0 and ls[0] in open_par:
+            #print('or am i here')
+            ls.remove(par_dict[ls[0]])
+            ls.remove(ls[0])    
+    return ls == []
+
 
 
 print(validParentheses('()')) # true
@@ -46,3 +28,4 @@ print(validParentheses('{[]}')) # true
 print(validParentheses('(]')) # false
 print(validParentheses('([)]')) # false
 print(validParentheses('(){}}{')) # false
+print(validParentheses('(([]){})')) # true
