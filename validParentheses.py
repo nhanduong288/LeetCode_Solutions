@@ -1,24 +1,25 @@
+# leetcode easy
 # Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', 
 # determine if the input string is valid.
 
 def validParentheses(s):
+    # using stack solution
+    # a dictionary for all the parentheses
     par_dict = {'(':')', '[':']', '{':'}'}
+    # a stack to keep track of the parentheses
+    par_stack = []
     open_par = '({['
-    ls = list(s)
-    '''print('where am i')
-    print(len(ls) > 0)
-    print(ls[0] in open_par)
-    print((ls.index(ls[0]) - ls.index(par_dict[ls[0]])) % 2 == 1)
-    print(ls.index(ls[0]))  
-    print(ls.index(')'))'''
-    if s.count('(') != s.count(')') or s.count('[') != s.count(']') or s.count('{') != s.count('}'):
-        ls = ls
-    else:
-        while len(ls) > 0 and ls[0] in open_par:
-            #print('or am i here')
-            ls.remove(par_dict[ls[0]])
-            ls.remove(ls[0])    
-    return ls == []
+    for par in s:
+        if par in open_par:
+            # append open parentheses to the stack
+            par_stack.append(par)
+        # finding closed parenthesis in the string to match open parenthesis from back to top
+        # to make sure they are valid parentheses 
+        elif par_stack and par == par_dict[par_stack[-1]]:
+            par_stack.pop()
+        else:
+            return False
+    return par_stack == []
 
 
 
