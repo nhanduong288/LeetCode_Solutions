@@ -8,7 +8,10 @@ class ListNode:
 
 class Solution:
     def mergeTwoSortedLists(l1, l2):
-        '''head = tail = ListNode(0)
+        # append to tail
+        # return with head
+        head = tail = ListNode(0)
+        # smaller number in first then bigger
         while l1 and l2:
             if l1.val < l2.val:
                 tail.next = l1
@@ -19,4 +22,4 @@ class Solution:
             tail = tail.next
 
         tail.next = l1 or l2
-        return head.next'''
+        return head.next
