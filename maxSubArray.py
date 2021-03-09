@@ -5,7 +5,6 @@
 def maxSubArray(nums):
     ans = nums[0]
     subarr_sum = nums[0]
-
     for i in range(1, len(nums)):
         print('nums[i]: ' + str(nums[i]) + ' --> ' + 'subarr_sum: ' + str(subarr_sum) + ' --> ' + 'ans: ' + str(ans))
         subarr_sum = max(nums[i], nums[i] + subarr_sum)
