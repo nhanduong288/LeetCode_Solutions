@@ -13,6 +13,7 @@ def addBinary(a, b):
     while aCount >= 0 or bCount >= 0:
         # Sum of two bits
         totalSum = carry
+        print('totalSum: ' + str(totalSum) + ' --> ' + 'carry: ' + str(carry) + ' --> ' + 'aCount: ' + str(aCount) + ' --> ' + 'bCount: ' + str(bCount) + ' --> ' + 'result: ' + str(result))     
         if aCount >= 0:
             totalSum += int(a[aCount])
             aCount -= 1
