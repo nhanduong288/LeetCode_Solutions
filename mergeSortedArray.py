@@ -15,12 +15,8 @@
 """
 
 def merge(nums1, m, nums2, n):
-    for num2 in nums2:
-        for num1 in nums1:
-            if num2 >= num1 and num2 != 0:
-                nums1.insert(num2, nums1.index(num1))
-            else:
-                nums1.append(num2)
-    return nums1
+    nums1, nums2 = nums1[:m], nums2[:n]
+    nums1.extend(nums2)
+    return sorted(nums1)
 
-print(merge([1,2,3,0,0,0], 6, [2,5,6], 3))
+print(merge([1,2,3,0,0,0], 3, [2,5,6], 3))
